@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+// App.jsx
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+
+import Easy from './page/Easy';
+import Medium from './page/Medium';
+import Hard from './page/Hard';
+import TaskDetail from './page/TaskDetail'; 
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <nav className='mainNav'>
+          <Link to='/Easy'>Easy</Link>
+          <Link to='/Medium'>Medium</Link>
+          <Link to='/Hard'>Hard</Link>
+        </nav>
+
+        <Routes>
+          <Route path='/Easy' element={<Easy />}></Route>
+          <Route path='/Medium' element={<Medium />}></Route>
+          <Route path='/Hard' element={<Hard />}></Route>
+          <Route path='/TaskDetail/:taskId' element={<TaskDetail />} />
+
+        </Routes>
+      </Router>
     </div>
   );
 }
